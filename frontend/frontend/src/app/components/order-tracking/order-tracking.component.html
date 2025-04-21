@@ -1,0 +1,23 @@
+<div *ngIf="order">
+  <h2>Order #{{ order.id }}</h2>
+  <p>Status: <strong>{{ order.status }}</strong></p>
+
+  <!-- Progress bar showing the order's progress -->
+  <mat-progress-bar
+    *ngIf="order.status !== 'Cancelled'"
+    mode="determinate"
+    [value]="getProgressValue(order.status)">
+  </mat-progress-bar>
+
+  <!-- Cancel Order Button: Shown if order can be cancelled -->
+  <button mat-button color="warn" (click)="cancelOrder()" *ngIf="canCancel">Cancel Order</button>
+  
+  <!-- Button to place a new order -->
+  <button mat-button (click)="placeNewOrder()">Place New Order</button>
+</div>
+
+<!-- Show a loading spinner if the order details are being fetched -->
+<mat-spinner *ngIf="loading" diameter="50"></mat-spinner>
+
+<!-- Display an error message if there was an issue loading the order -->
+<mat-snack-bar *ngIf="error">Failed to load order details.</mat-snack-bar>

@@ -1,0 +1,58 @@
+<div class="order-form-container" *ngIf="!loadingRestaurants; else loadingRestaurantsTpl">
+  <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
+    <h2>Place Your Order</h2>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Customer Name</mat-label>
+      <input matInput formControlName="customer_name" placeholder="Enter your name" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Select Restaurant</mat-label>
+      <mat-select formControlName="restaurant" (selectionChange)="onRestaurantChange()">
+        <mat-option *ngFor="let restaurant of restaurants" [value]="restaurant.id">
+          {{ restaurant.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div *ngIf="loading" class="loading">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+
+    <div *ngIf="menuItems.length > 0 && !loading" class="menu-items">
+      <h3>Menu Items</h3>
+      <div *ngFor="let item of menuItems" class="menu-item">
+        <div class="details">
+          <div class="item-name">{{ item.name }}</div>
+          <div class="item-price">₹{{ item.price }}</div>
+        </div>
+        <div class="quantity-control">
+          <button mat-icon-button color="primary" (click)="decrementQuantity(item)">
+            <mat-icon>remove</mat-icon>
+          </button>
+          <span class="quantity">{{ item.quantity }}</span>
+          <button mat-icon-button color="primary" (click)="incrementQuantity(item)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="summary" *ngIf="getTotalPrice() > 0">
+      <p><strong>Total Items:</strong> {{ getSelectedItemIds().length }}</p>
+      <p><strong>Total Price:</strong> ₹{{ getTotalPrice() }}</p>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="submitting">
+      {{ submitting ? 'Placing Order...' : 'Place Order' }}
+    </button>
+  </form>
+</div>
+
+<ng-template #loadingRestaurantsTpl>
+  <div class="loading">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Loading restaurants...</p>
+  </div>
+</ng-template>

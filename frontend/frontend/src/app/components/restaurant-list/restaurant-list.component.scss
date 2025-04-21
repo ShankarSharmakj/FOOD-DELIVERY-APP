@@ -1,0 +1,80 @@
+.restaurant-list-container {
+  padding: 20px 0;
+}
+
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.filter-field {
+  min-width: 200px;
+  flex: 1;
+}
+
+.restaurant-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.restaurant-card {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.restaurant-card mat-card-header {
+  margin-bottom: 16px;
+}
+
+.restaurant-card mat-card-content {
+  flex-grow: 1;
+}
+
+.restaurant-card mat-card-content p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.restaurant-card mat-card-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px 16px;
+}
+
+.error-container, .empty-state-card {
+  text-align: center;
+  padding: 32px;
+}
+
+.error-card {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.error-card mat-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+  margin-bottom: 16px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}

@@ -1,0 +1,135 @@
+.tracking-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.tracking-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.order-card {
+  margin-bottom: 24px;
+}
+
+.order-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.status-tracker {
+  margin: 32px 0;
+}
+
+.status-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.status-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+  
+  &.completed .step-icon {
+    color: #4caf50;
+  }
+  
+  &.current .step-icon {
+    color: #3f51b5;
+  }
+}
+
+.step-icon {
+  margin-bottom: 8px;
+}
+
+.step-label {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.section-divider {
+  margin: 24px 0;
+}
+
+.info-section {
+  margin-bottom: 24px;
+}
+
+.info-section h3 {
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+}
+
+.order-item {
+  height: auto !important;
+  padding: 8px 0 !important;
+}
+
+.item-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+  font-size: 18px;
+}
+
+.error-container, .loading-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.error-card {
+  max-width: 500px;
+  text-align: center;
+  padding: 24px;
+}
+
+.error-card mat-icon {
+  font-size: 48px;
+  height: 48px;
+  width: 48px;
+  margin-bottom: 16px;
+}
+
+.status-chip {
+  font-weight: 500;
+}
+
+.status-chip.Pending {
+  background-color: #ff9800;
+  color: white;
+}
+
+.status-chip.Preparing {
+  background-color: #2196f3;
+  color: white;
+}
+
+.status-chip.Out-for-Delivery {
+  background-color: #9c27b0;
+  color: white;
+}
+
+.status-chip.Delivered {
+  background-color: #4caf50;
+  color: white;
+}

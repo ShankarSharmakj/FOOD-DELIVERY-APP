@@ -1,0 +1,51 @@
+<div *ngIf="loading" class="loading-container">
+  <mat-progress-spinner mode="indeterminate" diameter="50"></mat-progress-spinner>
+  <p>Loading restaurant details...</p>
+</div>
+
+<div *ngIf="error" class="error-container">
+  <mat-icon>error</mat-icon>
+  <p>Something went wrong, please try again later.</p>
+</div>
+
+<div *ngIf="restaurant" class="restaurant-details">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ restaurant.name }}</mat-card-title>
+      <mat-card-subtitle>{{ restaurant.cuisine }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ restaurant.description }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <div *ngIf="menuItems.length > 0" class="menu-items">
+    <h3>Menu</h3>
+    <div *ngFor="let item of menuItems" class="menu-item">
+      <mat-chip
+        *ngIf="!isSelected(item.id)"
+        (click)="toggleItemSelection(item.id)"
+        class="menu-chip"
+        color="primary"
+      >
+        {{ item.name }} - ${{ item.price }}
+      </mat-chip>
+      <mat-chip
+        *ngIf="isSelected(item.id)"
+        (click)="toggleItemSelection(item.id)"
+        class="menu-chip selected"
+        color="accent"
+      >
+        {{ item.name }} - ${{ item.price }}
+      </mat-chip>
+    </div>
+  </div>
+
+  <div *ngIf="menuItems.length === 0" class="no-menu-items">
+    <p>No menu items available for this restaurant.</p>
+  </div>
+
+  <div class="checkout-btn">
+    <button mat-raised-button color="primary" (click)="proceedToCheckout()">Proceed to Checkout</button>
+  </div>
+</div>

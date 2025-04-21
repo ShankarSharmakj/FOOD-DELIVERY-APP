@@ -1,0 +1,90 @@
+/* Global styles */
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --primary-color: #FF5722;
+  --primary-light: #FFCCBC;
+  --primary-dark: #E64A19;
+  --secondary-color: #4CAF50;
+  --secondary-light: #A5D6A7;
+  --secondary-dark: #2E7D32;
+  --accent-color: #2196F3;
+  --success-color: #4CAF50;
+  --warning-color: #FFC107;
+  --error-color: #F44336;
+  --text-primary: rgba(0, 0, 0, 0.87);
+  --text-secondary: rgba(0, 0, 0, 0.54);
+  --background-color: #F5F5F5;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.page-title {
+  margin-bottom: 24px;
+  color: var(--primary-dark);
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.status-pending {
+  color: var(--accent-color);
+}
+
+.status-preparing {
+  color: var(--warning-color);
+}
+
+.status-out-for-delivery {
+  color: var(--primary-color);
+}
+
+.status-delivered {
+  color: var(--success-color);
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+}
